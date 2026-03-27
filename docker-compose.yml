@@ -1,17 +1,15 @@
-version: '3'
-
 services:
   payload:
-    image: node:18-alpine
+    image: node:20-alpine
     container_name: node-app
     restart: always
     ports:
       - '3000:3000'
     volumes:
       - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - /home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare npm@latest --activate && npm install && npm run dev"
+    command: sh -c "npm install && npm run dev"
     depends_on:
       - postgres #dont start the app unless the postgres enabled
     env_file:
@@ -35,4 +33,3 @@ services:
 
 volumes:
   pgdata:
-  node_modules:
