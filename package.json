@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-web-cms-next-test",
+  "name": "cosmo-quiz-app",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "description": "A ultimate cosmic personality test.",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -31,6 +31,7 @@
     "payload": "3.48.0",
     "postcss": "^8.5.6",
     "react": "19.1.0",
+    "react-dom": "19.1.0",
     "sharp": "0.34.2",
     "tailwindcss": "^4.1.11"
   },
@@ -39,7 +40,7 @@
     "@testing-library/react": "16.3.0",
     "@types/node": "^22.5.4",
     "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.2",
+    "@types/react-dom": "19.1.0",
     "@vitejs/plugin-react": "4.5.2",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.3.0",
