@@ -69,9 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    quiz: Quiz;
-    'quiz-ranges': QuizRange;
-    'quiz-results': QuizResult;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -80,9 +77,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    quiz: QuizSelect<false> | QuizSelect<true>;
-    'quiz-ranges': QuizRangesSelect<false> | QuizRangesSelect<true>;
-    'quiz-results': QuizResultsSelect<false> | QuizResultsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -164,51 +158,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz".
- */
-export interface Quiz {
-  id: number;
-  quizTitle: string;
-  quizDescription?: string | null;
-  questions: {
-    question: string;
-    options: {
-      label: string;
-      score: number;
-      id?: string | null;
-    }[];
-    id?: string | null;
-  }[];
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz-ranges".
- */
-export interface QuizRange {
-  id: number;
-  minScore: number;
-  maxScore: number;
-  label: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz-results".
- */
-export interface QuizResult {
-  id: number;
-  email?: string | null;
-  score: number;
-  label: string;
-  notes?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -221,18 +170,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'quiz';
-        value: number | Quiz;
-      } | null)
-    | ({
-        relationTo: 'quiz-ranges';
-        value: number | QuizRange;
-      } | null)
-    | ({
-        relationTo: 'quiz-results';
-        value: number | QuizResult;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -315,52 +252,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz_select".
- */
-export interface QuizSelect<T extends boolean = true> {
-  quizTitle?: T;
-  quizDescription?: T;
-  questions?:
-    | T
-    | {
-        question?: T;
-        options?:
-          | T
-          | {
-              label?: T;
-              score?: T;
-              id?: T;
-            };
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz-ranges_select".
- */
-export interface QuizRangesSelect<T extends boolean = true> {
-  minScore?: T;
-  maxScore?: T;
-  label?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "quiz-results_select".
- */
-export interface QuizResultsSelect<T extends boolean = true> {
-  email?: T;
-  score?: T;
-  label?: T;
-  notes?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
