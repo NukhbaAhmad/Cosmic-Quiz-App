@@ -1,19 +1,19 @@
 services:
-  payload:
-    image: node:20-alpine
-    container_name: node-app
-    restart: always
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - /home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "npm install && npm run dev"
-    depends_on:
-      - postgres #dont start the app unless the postgres enabled
-    env_file:
-      - .env
+  # payload:
+  #   image: node:20-alpine
+  #   container_name: node-app
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - .:/home/node/app
+  #     - /home/node/app/node_modules
+  #   working_dir: /home/node/app/
+  #   command: sh -c "npm install && npm run dev"
+  #   depends_on:
+  #     - postgres #dont start the app unless the postgres enabled
+  #   env_file:
+  #     - .env
 
   # Postgres
   postgres:
