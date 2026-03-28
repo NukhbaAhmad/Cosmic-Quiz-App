@@ -21,7 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@config/*": ["./src/config/*"],           
-      "@constants/*": ["./src/constants/*"],     
+      "@constants/*": ["src/lib/*"],     
       "@collections/*": ["./src/collections/*"], 
       "@types/*": ["./src/types/*"]    ,   
       "@payload-types": ["./src/types/payload-types.ts"],     

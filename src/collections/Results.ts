@@ -1,15 +1,15 @@
 import { CollectionConfig } from 'payload'
-import { encrypt, decrypt } from '@/utils/crypto'
+import { encrypt, decrypt } from '@/utils/crypto.utils'
 
 export const QuizResults: CollectionConfig = {
   slug: 'quiz-results',
   access: {
-    create: () => true, 
-    read: () => true, 
+    create: () => true,
+    read: () => true,
   },
   admin: {
     useAsTitle: 'email',
-    defaultColumns: ['email', 'score', 'label', 'createdAt'],
+    defaultColumns: ['email', 'score', 'label', 'notes', 'createdAt'],
   },
   fields: [
     {
@@ -33,6 +33,6 @@ export const QuizResults: CollectionConfig = {
         beforeChange: [({ value }) => (value ? encrypt(value) : value)],
         afterRead: [({ value }) => (value ? decrypt(value) : value)],
       },
-    }
+    },
   ],
 }

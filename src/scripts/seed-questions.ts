@@ -1,12 +1,12 @@
 import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from '@config/payload.config'
-import { QUIZ_QUESTIONS, SCORING_RANGES } from "@constants/questions"
+import { QUIZ_QUESTIONS, SCORING_RANGES } from '@/lib/questions'
 
 async function seed() {
   const payload = await getPayload({ config })
-  
-  console.log("Seeding the Quiz (Title and all Questions)...")
+
+  console.log('Seeding the Quiz ...')
 
   try {
     await payload.create({
@@ -14,7 +14,7 @@ async function seed() {
       data: {
         quizTitle: 'What Cosmic Animal Are You?',
         quizDescription: 'Answer these questions to find your universal spirit.',
-        questions: QUIZ_QUESTIONS, 
+        questions: QUIZ_QUESTIONS,
       },
     })
     console.log(`✅ Successfully added the Quiz and all ${QUIZ_QUESTIONS.length} questions!`)
@@ -40,7 +40,7 @@ async function seed() {
   process.exit(0)
 }
 
-seed().catch(err => {
+seed().catch((err) => {
   console.error('Seed failed:', err)
   process.exit(1)
 })
