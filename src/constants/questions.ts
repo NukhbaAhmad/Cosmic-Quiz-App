@@ -1,4 +1,5 @@
-export const QUIZ_QUESTIONS =[   {
+// COSMIC QUESTIONS
+export const QUIZ_QUESTIONS = [{
       "question": "What's your ideal weekend vibe?",
       "options": [
         { "label": "Stargazing in silence 🌌", "score": 0 },
@@ -89,15 +90,33 @@ export const QUIZ_QUESTIONS =[   {
     //   ]
     // }
 ]
-  export const QUIZ_RESULTS = [
+
+// COSMIC THEME RANGES
+export const QUIZ_RESULTS = [
   { minScore: 0, maxScore: 6, label: "🌙 Mooncat — Mysterious, calm, and observant." },
   { minScore: 7, maxScore: 14, label: "🦊 Solar Fox — Clever, curious, and adaptable." },
   { minScore: 15, maxScore: 22, label: "🐻 Cosmic Bear — Grounded, strong, and thoughtful." },
   { minScore: 23, maxScore: 30, label: "🐉 Galactic Dragon — Wild, bold, and unstoppable." },
 ]
 
+
 export const SCORING_RANGES = QUIZ_RESULTS.map(r => ({
-  min: r.minScore,
-  max: r.maxScore,
+  minScore: r.minScore,  
+  maxScore: r.maxScore, 
+  label: r.label,
+}))
+
+// DEFAULT RANGE
+export const DEFAULT_QUIZ_RESULTS = [
+  { minScore: 0, maxScore: 20, label: "🌙 Mooncat — Mysterious, calm, and observant." },
+  { minScore: 21, maxScore: 40, label: "🦊 Solar Fox — Clever, curious, and adaptable." },
+  { minScore: 41, maxScore: 60, label: "🐻 Cosmic Bear — Grounded, strong, and thoughtful." },
+  { minScore: 61, maxScore: 80, label: "🐉 Galactic Dragon — Wild, bold, and unstoppable." },
+  { minScore: 81, maxScore: Infinity, label: "✨ Cosmic Deity — Beyond all comprehension." },
+]
+
+export const DEFAULT_SCORING_RANGES = DEFAULT_QUIZ_RESULTS.map(r => ({
+  minScore: r.minScore,  
+  maxScore: r.maxScore === Infinity ? 999999 : r.maxScore,  // For DB storage
   label: r.label,
 }))

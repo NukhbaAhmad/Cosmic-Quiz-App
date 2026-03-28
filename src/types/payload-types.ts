@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     questions: Question;
+    'quiz-ranges': QuizRange;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
+    'quiz-ranges': QuizRangesSelect<false> | QuizRangesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -175,6 +177,18 @@ export interface Question {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quiz-ranges".
+ */
+export interface QuizRange {
+  id: number;
+  minScore: number;
+  maxScore: number;
+  label: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -191,6 +205,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'questions';
         value: number | Question;
+      } | null)
+    | ({
+        relationTo: 'quiz-ranges';
+        value: number | QuizRange;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -287,6 +305,17 @@ export interface QuestionsSelect<T extends boolean = true> {
         score?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quiz-ranges_select".
+ */
+export interface QuizRangesSelect<T extends boolean = true> {
+  minScore?: T;
+  maxScore?: T;
+  label?: T;
   updatedAt?: T;
   createdAt?: T;
 }
