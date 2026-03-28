@@ -20,7 +20,7 @@ A MERN-stack application (Next.js, Node.js, Payload CMS, PostgreSQL) that allows
 
 First clone the project as:
 
-1. `git clone https://github.com/NukhbaAhmad/Quiz-App-.git`
+1. `git clone https://github.com/NukhbaAhmad/Cosmic-Quiz-App.git`
 2. `cd CosmoQuiz`
 
 ---
