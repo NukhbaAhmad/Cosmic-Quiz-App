@@ -17,14 +17,14 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
-      baseDir: path.resolve(dirname),
+      baseDir: path.resolve(dirname,".."),
     },
   },
   collections: [Users, Media,Questions],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, '..', 'types','payload-types.ts'),
   },
   db: postgresAdapter({
     pool: {

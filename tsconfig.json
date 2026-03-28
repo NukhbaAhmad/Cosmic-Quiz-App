@@ -20,7 +20,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@payload-config": ["src/config/payload.config.ts"]
+      "@config/*": ["./src/config/*"],           
+      "@constants/*": ["./src/constants/*"],     
+      "@collections/*": ["./src/collections/*"], 
+      "@types/*": ["./src/types/*"]    ,          
+      "@payload-config": ["./src/config/payload.config.ts"]
     },
     "target": "ES2022"
   },
