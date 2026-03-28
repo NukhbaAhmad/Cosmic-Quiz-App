@@ -10,7 +10,6 @@ import sharp from 'sharp'
 import { Quiz } from '@collections/Quiz'
 import { Users } from '@collections/Users'
 import { QuizRanges } from '@/collections/Ranges'
-import { Media } from '@collections/Media'
 import { QuizResults } from '@/collections/Results'
 
 const filename = fileURLToPath(import.meta.url)
@@ -23,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname, '..'),
     },
   },
-  collections: [Users, Media, Quiz, QuizRanges, QuizResults],
+  collections: [Users, Quiz, QuizRanges, QuizResults],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
