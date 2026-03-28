@@ -8,6 +8,9 @@ export const validateNotes = (notes: string): boolean => {
 }
 
 export const validateQuizSubmission = (email: string, notes: string) => {
+  if (!email) {
+    return 'Please enter email address to save scores.'
+  }
   if (email && !isEmailValid(email)) {
     return 'Please enter a valid cosmic email address.'
   }
