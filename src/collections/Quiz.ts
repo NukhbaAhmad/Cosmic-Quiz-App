@@ -4,8 +4,16 @@ export const Quiz: CollectionConfig = {
     slug: "quiz",
     admin: {
     useAsTitle: 'quizTitle',
+    defaultColumns: ['quizTitle', 'createdAt', 'updatedAt'],
   },
-  access: {
+    access: {
+    create: async ({ req }) => {
+      const existingQuizzes = await req.payload.find({
+      collection: 'quiz',
+      limit: 1,
+      });
+    return existingQuizzes.totalDocs === 0; 
+  },
     read: () => true,
     },
     fields: [

@@ -5,7 +5,7 @@ export const QuizResults: CollectionConfig = {
   slug: 'quiz-results',
   access: {
     create: () => true, 
-    read: ({ req: { user } }) => Boolean(user), 
+    read: () => true, 
   },
   admin: {
     useAsTitle: 'email',
