@@ -177,6 +177,8 @@ Runs PostgreSQL in Docker while Next.js/Payload run on your local machine.
 
 - **UI Components:** Added small resuable components to ensure the clean structure for UI.
 
+- **Validations** Added proper validations for email, notes, quering emails to ensure the correct data hit the database.
+
 ---
 
 ## ⏳ Time Management & Trade-offs
