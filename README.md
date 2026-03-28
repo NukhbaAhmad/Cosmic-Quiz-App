@@ -21,7 +21,7 @@ A MERN-stack application (Next.js, Node.js, Payload CMS, PostgreSQL) that allows
 First clone the project as:
 
 1. `git clone https://github.com/NukhbaAhmad/Cosmic-Quiz-App.git`
-2. `cd CosmoQuiz`
+2. `cd Cosmic-Quiz-App`
 
 ---
 
@@ -35,7 +35,7 @@ Best for production-like environments.
     ```bash
     docker-compose up --build
     ```
-2.  **Seed the database (Questions & Ranges in case admin dont want to add them):**
+2.  **Seed the database (Questions & Ranges seeded, in case admin doesn't want to add them):**
     ```bash
     docker-compose exec payload npm run seed
     ```
@@ -52,44 +52,55 @@ Best for production-like environments.
 
 Runs PostgreSQL in Docker while Next.js/Payload run on your local machine.
 
-1.  **Start DB:** Ensure your Docker Desktop is running the Postgres container using: `docker-compose up --build`
-2.  **Install dependencies:** `npm install`
-3.  **Sync Types of Payload CMS:** `npm run generate:types`
-4.  **Run Development Server:** `npm run dev`
-5.  **Seed Data:** `npm run seed`
+1.  **Start Db:**
+    ```bash
+    docker-compose up --build postgres
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
+3.  **Sync Types of Payload CMS:**
+    ```bash
+    npm run generate:types
+    ```
+4.  **Run Development Server:**
+    ```bash
+     npm run dev
+    ```
+5.  **Seed Data:**
+    ```bash
+     npm run seed
+    ```
 ---
 
 ## Access Points
 
-Quiz App: `http://localhost:3000`
-Admin Panel: `http://localhost:3000/admin`
-Database: `localhost:5432`
-Default User: (First time, create via setup screen)
+- Quiz App: `http://localhost:3000`
+- Admin Panel: `http://localhost:3000/admin`
+- Database: `localhost:5432`
+- Default User: (First time, create via setup screen)
  
 ---
 
 ## 🏗 Admin Features
 
-- **Flexible Quiz Management:**
+**1. Flexible Quiz Management:**
+- Can add the quiz main title.
+- Can add, edit questions with 2–4 options each.
+- Can add ranges.
 
-1.  Can add the quiz main title.
-2.  Can add, edit questions with 2–4 options each.
-3.  Can add ranges.
+**2. Dynamic Ranges:**
+- If the Admin doesn't provide custom result ranges, the system falls back to `DEFAULT_QUIZ_RESULTS`.
+- The results are calculated based on the default ranges if not ranges provided/added.
 
-- **Dynamic Ranges:**
+**3. Automated Seeding:**
+- Supports a `QUIZ_QUESTIONS` JSON/TS file for bulk uploads via the seed script.
 
-1.  If the Admin doesn't provide custom result ranges, the system falls back to `DEFAULT_QUIZ_RESULTS`.
-2.  The results are calculated based on the default ranges if not ranges provided/added.
-
-- **Automated Seeding:**
-
-1. Supports a `QUIZ_QUESTIONS` JSON/TS file for bulk uploads via the seed script.
-
-- **UI Customization:** 
-
-1.  Can add custom quiz, score ranges, with titles for quiz 
-2.  Questions and options are fully editable from the Payload UI, supporting custom ordering and scores.
+**4. UI Customization:** 
+- Can add custom quiz, score ranges, with titles for quiz 
+- Questions and options are fully editable from the Payload UI, supporting custom ordering and scores.
 
 
 ---
@@ -158,9 +169,7 @@ Default User: (First time, create via setup screen)
 
 - **Context API:** Used to manage quiz state (answers, scoring) globally, ensuring a smooth transition between questions without re-rendering the entire layout.
 
-- **Proper Fallbacks** 
-1.  Added proper Data Guards to show messages if no data found.
-2.  Proper loaders added to ensure better UX
+- **Proper Fallbacks** Added proper Data Guards to show messages if no data found and Proper loaders added to ensure better UX.
 
 - **Hybrid Docker Workflow:** Decided on a hybrid approach to save local machine resources and take advantage of Next.js Fast Refresh during frontend development.
 
@@ -195,7 +204,10 @@ _Following prioritizations:_
 ### 🚀 Future Improvements:
 
 1.  **Real-Time Score Sync:** Implement a "Reference" system where user answers are stored by ID, so scores update dynamically if the Admin changes question values.
+
 2.  **Private Results:** Implement Auth so users can only see their own history, preventing unauthorized email lookups.
+
 3.  **Upload Questions:** Can add feature for uploading files with a proper format to save all questions in db at once by admin
+
 4.  **Frontend Optimizations** Can make the frontend more better, more better way of organizing css classes
 can make the classes dynamic, use variables or direct define the css classes if needed for tailwind4
