@@ -1,11 +1,31 @@
 import type { CollectionConfig } from 'payload'
 
-export const Questions: CollectionConfig = {
-  slug: 'questions',
+export const Quiz: CollectionConfig = {
+    slug: "quiz",
+    admin: {
+    useAsTitle: 'quizTitle',
+  },
   access: {
     read: () => true,
-  },
-  fields: [
+    },
+    fields: [
+    {
+      name: 'quizTitle',
+      type: 'text',
+      required: true,
+      defaultValue: 'What Cosmic Animal Are You?',
+    },
+    {
+      name: 'quizDescription',
+      type: 'textarea',
+      defaultValue: 'Answer these questions.',
+    },
+    {
+    name: "questions",
+    type: "array",
+    minRows:1,
+    required:true,
+    fields: [
     {
       name: 'question',
       type: 'text',
@@ -30,5 +50,7 @@ export const Questions: CollectionConfig = {
         },
       ],
     },
-  ],
+    ]
+    }
+  ]
 }

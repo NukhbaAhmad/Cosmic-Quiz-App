@@ -4,6 +4,9 @@ export const QuizRanges: CollectionConfig = {
   slug: 'quiz-ranges',
   admin: {
     useAsTitle: 'label',
+    },
+  access: {
+    read: () => true,
   },
   fields: [
     {
