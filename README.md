@@ -211,3 +211,5 @@ _Following prioritizations:_
 
 4.  **Frontend Optimizations** Can make the frontend more better, more better way of organizing css classes
 can make the classes dynamic, use variables or direct define the css classes if needed for tailwind4
+
+5.  **Navigations** Can make the routing more sleek
