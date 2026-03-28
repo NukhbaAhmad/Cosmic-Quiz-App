@@ -30,7 +30,7 @@ export const ScoreBoard = () => {
 
       <div className="space-y-4">
         <InputField
-          label="Email (Optional)"
+          label="Email"
           id="email"
           type="email"
           value={email}
