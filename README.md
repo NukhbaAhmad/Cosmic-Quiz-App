@@ -1,257 +1,201 @@
-# Full Stack Developer Quiz App Test
-This template comes configured with the bare minimum to get started on anything you need.
+Quiz: A Full-Stack App
 
-##  Overview
+A MERN-stack application (Next.js, Node.js, Payload CMS, PostgreSQL) that allows users to take an interactive cosmic personality quiz and store their results. Built with a focus on **clean architecture**, **reusable components**, and **professional DX (Developer Experience)**.
 
-Your task is to build a **minimal but functional quiz app** using:
+---
 
-- **Next.js** (latest version. Use either SSR or SSG) + typescript
-- **Payload CMS** (connected to **Postgres**)
-- **Tailwind CSS** for styling
+## 🛠 Tech Stack
 
-The quiz is based on a cosmic personality test (see sample JSON below). The app must meet the outlined user journeys and backend criteria. Bonus points for modularity, maintainability, clarity, and simplicity.
+- **Frontend:** Next.js 15 (App Router), Tailwind CSS, Lucide React.
+- **Backend/CMS:** Payload CMS 3.0 (Headless), Node.js.
+- **Database:** PostgreSQL.
+- **API Layer:** GraphQL (for flexible, type-safe data fetching).
+- **State Management:** React Context API (to avoid prop-drilling).
+- **Security:** AES-256 Encryption for sensitive user notes.
+- **DevOps:** Docker & Docker Compose to run postgres & node containers.
 
-## Quick Start - local setup
-To spin up this template locally, follow these steps:
+---
 
-### Development
+## 🏃 How to Run the Project
 
-1. First [clone the repo](#clone) if you have not done so already
-2. Connect with your local postgres instance and input credentials in `.env`
-3. `npm install && npm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+First clone the project as:
 
+1. `git clone https://github.com/NukhbaAhmad/Quiz-App-.git`
+2. `cd CosmoQuiz`
 
-## Test data
+---
 
-You’ll use this data (store in Payload CMS) to build the quiz:
+## 🏃 How to Run the Project
 
-<details>
-<summary>📦 Sample Quiz Data:</summary>
+### Option A: Full Docker Mode (Zero Setup)
 
-```json
-{
-  "title": "What Kind of Cosmic Animal Are You?",
-  "questions": [
-    {
-      "id": 1,
-      "question": "What's your ideal weekend vibe?",
-      "options": [
-        { "label": "Stargazing in silence 🌌", "score": 0 },
-        { "label": "A road trip with no map 🚗", "score": 1 },
-        { "label": "Organizing your sock drawer 🧦", "score": 2 },
-        { "label": "Hosting a secret underground rave 💃", "score": 3 }
-      ]
-    },
-    {
-      "id": 2,
-      "question": "How do you respond to conflict?",
-      "options": [
-        { "label": "Meditate and wait for the storm to pass 🧘", "score": 0 },
-        { "label": "Speak up, but keep it chill 😎", "score": 1 },
-        { "label": "Write a pros-and-cons list 📋", "score": 2 },
-        { "label": "Throw a pie (or a metaphorical one) 🥧", "score": 3 }
-      ]
-    },
-    {
-      "id": 3,
-      "question": "Which color calls to your soul?",
-      "options": [
-        { "label": "Deep violet 💜", "score": 0 },
-        { "label": "Electric blue ⚡", "score": 1 },
-        { "label": "Earthy brown 🌱", "score": 2 },
-        { "label": "Neon green 🟢", "score": 3 }
-      ]
-    },
-    {
-      "id": 4,
-      "question": "Your dream mode of transport?",
-      "options": [
-        { "label": "Flying carpet 🪄", "score": 0 },
-        { "label": "Teleportation 💫", "score": 1 },
-        { "label": "Tank 🛡️", "score": 2 },
-        { "label": "Unicycle on fire 🔥", "score": 3 }
-      ]
-    },
-    {
-      "id": 5,
-      "question": "Pick a snack:",
-      "options": [
-        { "label": "Moon cheese 🧀", "score": 0 },
-        { "label": "Spicy chips 🌶️", "score": 1 },
-        { "label": "Wasabi popcorn 🍿", "score": 2 },
-        { "label": "Cosmic brownies 🍫", "score": 3 }
-      ]
-    },
-    {
-      "id": 6,
-      "question": "What's your greatest strength?",
-      "options": [
-        { "label": "Patience", "score": 0 },
-        { "label": "Curiosity", "score": 1 },
-        { "label": "Planning", "score": 2 },
-        { "label": "Chaos energy", "score": 3 }
-      ]
-    },
-    {
-      "id": 7,
-      "question": "Choose a celestial body:",
-      "options": [
-        { "label": "The Moon 🌕", "score": 0 },
-        { "label": "A comet ☄️", "score": 1 },
-        { "label": "A black hole 🕳️", "score": 2 },
-        { "label": "A rogue planet 🌑", "score": 3 }
-      ]
-    },
-    {
-      "id": 8,
-      "question": "What's your social energy?",
-      "options": [
-        { "label": "Low-key lurker", "score": 0 },
-        { "label": "One-on-one convos", "score": 1 },
-        { "label": "Team brainstormer", "score": 2 },
-        { "label": "Life of the party", "score": 3 }
-      ]
-    },
-    {
-      "id": 9,
-      "question": "What’s your spirit time of day?",
-      "options": [
-        { "label": "3am under the stars 🌌", "score": 0 },
-        { "label": "Sunrise hustle 🌅", "score": 1 },
-        { "label": "Midday focus ☀️", "score": 2 },
-        { "label": "Midnight rebellion 🌒", "score": 3 }
-      ]
-    },
-    {
-      "id": 10,
-      "question": "What animal resonates with you most?",
-      "options": [
-        { "label": "Owl 🦉", "score": 0 },
-        { "label": "Fox 🦊", "score": 1 },
-        { "label": "Bear 🐻", "score": 2 },
-        { "label": "Dragon 🐉", "score": 3 }
-      ]
-    }
-  ],
-  "results": [
-    { "range": [0, 6], "label": "🌙 Mooncat — Mysterious, calm, and observant." },
-    { "range": [7, 14], "label": "🦊 Solar Fox — Clever, curious, and adaptable." },
-    { "range": [15, 22], "label": "🐻 Cosmic Bear — Grounded, strong, and thoughtful." },
-    { "range": [23, 30], "label": "🐉 Galactic Dragon — Wild, bold, and unstoppable." }
-  ]
-}
-```
+Best for production-like environments.
+
+1.  **Spin up containers:**
+    ```bash
+    docker-compose up --build
+    ```
+2.  **Seed the database (Questions & Ranges in case admin dont want to add them):**
+    ```bash
+    docker-compose exec payload npm run seed
+    ```
+3.  **Check status:**
+    ```bash
+    docker-compose ps
+    ```
+4.  **Sync Types:**
+    ```bash
+    docker-compose exec payload npm run generate:types
+    ```
+
+### Option B: Hybrid Mode (Node Local + PostgreSQL Docker)
+
+Runs PostgreSQL in Docker while Next.js/Payload run on your local machine.
+
+1.  **Start DB:** Ensure your Docker Desktop is running the Postgres container using: `docker-compose up --build`
+2.  **Install dependencies:** `npm install`
+3.  **Sync Types of Payload CMS:** `npm run generate:types`
+4.  **Run Development Server:** `npm run dev`
+5.  **Seed Data:** `npm run seed`
+
+---
+
+## Access Points
+
+Quiz App: `http://localhost:3000`
+Admin Panel: `http://localhost:3000/admin`
+Database: `localhost:5432`
+Default User: (First time, create via setup screen)
+ 
+---
+
+## 🏗 Admin Features
+
+- **Flexible Quiz Management:**
+
+1.  Can add the quiz main title.
+2.  Can add, edit questions with 2–4 options each.
+3.  Can add ranges.
+
+- **Dynamic Ranges:**
+
+1.  If the Admin doesn't provide custom result ranges, the system falls back to `DEFAULT_QUIZ_RESULTS`.
+2.  The results are calculated based on the default ranges if not ranges provided/added.
+
+- **Automated Seeding:**
+
+1. Supports a `QUIZ_QUESTIONS` JSON/TS file for bulk uploads via the seed script.
+
+- **UI Customization:** 
+
+1.  Can add custom quiz, score ranges, with titles for quiz 
+2.  Questions and options are fully editable from the Payload UI, supporting custom ordering and scores.
 
 
-</details>
+---
 
+## 🏗 CMS Features
+ 
+### What You Can Do As Admin
+ 
+**1. Manage Questions**
+- Navigate to "Questions" collection
+- Click "Create" to add new question
+- Set question text and 2-4 options with scores (0-3)
+- Options are editable and reorderable
+ 
+**2. Manage Ranges (Results)**
+- Navigate to "Quiz Ranges" collection
+- Create ranges manually (e.g., 0-6: Mooncat, 7-14: Solar Fox)
+- OR use default ranges (auto-loaded if none exist)
+ 
+**3. View User Responses**
+- Navigate to "Quiz Responses" collection
+- See all user submissions with encrypted notes
+- Notes auto-decrypt for display
+- Filter by email, score range, or date
+ 
+**4. User Management**
+- Navigate to "Users" collection
+- Create additional admin accounts
+- Control quiz data visibility
+ 
 
+### What You Can Do As User
+ 
+**1. Main layout**
+- Navigate to "/" route
+- A main layout for either taking Quiz or viewing results
+ 
+**2. Take Quiz**
+- Select Take Quiz to start the quiz
+- A loader shown until data fethed.
+- If no data found proper error messages shown
+- Take the quiz and see the final score.
+- If provided email can save the notes+scores
+- After submission can either take another quiz to head to main layout page
+ 
+**3. View Results**
+- Can view the saved records history.
+- Enter the email with proper format to get the details.
+- A loader shown until data fetched.
+- If no data found proper error messages shown
+ 
+**4. Admin Only Dashboard**
+- An admin only route added for access to payload CMS Dashboard
 
-## User Journey
+**5. Added notes & email**
+- Can add email while saving scores.
+- Can query using email to get all the scores ever saved.
 
-Your implementation **must** support the following flow, if possible in one or 2 pages maximum to save time:
+---
 
-### ✅ Required Features
-1. **Take the quiz**
-   - Display each question and options(shuffled)
-   - Allow user to answer all 10 questions
-   - On submit, calculate total score and show matching result label
-   
-2. **Score page**
-   - Show total score and matching cosmic animal
-   - Show how the score was calculated (score breakdown or logic)
-   - Include an optional free-text **"Notes" field**
-   - Add a playful easter egg: If the user scores exactly 13, replace the label with ‘You lucky fucker! You scored 13 exactly.’
+## 🧠 Architectural Choices & Assumptions
 
-3. **Email saving**
-   - Ask user for email (optional)
-   - If user enters it, **store quiz results + score + notes** in the DB
+- **GraphQL over REST:** I chose GraphQL for its compatibility with Payload's schema and to prevent over-fetching, ensuring the frontend only requests necessary fields.
 
-4. **Retrieve old results**
-   - User enters email
-   - App shows previous quiz score, notes, breakdown, just like the score page
+- **Encryption Hooks:** Implemented `beforeChange` and `afterRead` hooks in Payload to ensure user "Notes" are encrypted at rest in the database but readable in the UI.
 
-5. **Data encryption**
-   - Encrypt/decrypt ONLY one field("Notes" if any) field in Payload using Hooks. See code snippet below.
-   - Acceptable methods:
-     - Store hashed data in DB, decrypt it for display
-     - See `Payload Encryption (Notes Field)` section for exact code snippet
+- **Context API:** Used to manage quiz state (answers, scoring) globally, ensuring a smooth transition between questions without re-rendering the entire layout.
 
+- **Proper Fallbacks** 
+1.  Added proper Data Guards to show messages if no data found.
+2.  Proper loaders added to ensure better UX
 
-## Technical Requirements
+- **Hybrid Docker Workflow:** Decided on a hybrid approach to save local machine resources and take advantage of Next.js Fast Refresh during frontend development.
 
-- Use only:
-  - **Next.js**
-  - **Payload CMS** + **Postgres**
-  - **TailwindCSS**
-- Minimal client-side JavaScript
-- No 3rd party quiz libraries or AI-generated code
-- Modular, readable, production-quality code
-- Follow clean architecture: reusable components, services, and schema definitions
-- Document logic where needed (README inline or in code)
-- Focus on **clarity, naming conventions, maintainability**
+- **Seeding:** Added seeds script to esnure the proper uploading of the available questions and ranges with just a single command. This saves the time while testing with just one command.
 
+- **UI Components:** Added small resuable components to ensure the clean structure for UI.
 
-## Bonus Points, optional
+---
 
-- ✅ Questions & options editable from Payload CMS UI
-  - Support question order, option scores, etc.
-- ✅ Mobile responsive
-- ✅ SSG with fallback or SSR for score screen
-- ✅ CI/CD setup or `.env.example` for local testing
-- ✅ No client-side state management lib required
+## ⏳ Time Management & Trade-offs
 
+_Following prioritizations:_
 
-## Scoring Logic
+### ✅ Prioritized:
 
-| Score Range | Result                     |
---|
-| 0–6         | 🌙 Mooncat                 |
-| 7–14        | 🦊 Solar Fox               |
-| 15–22       | 🐻 Cosmic Bear             |
-| 23–30       | 🐉 Galactic Dragon         |
+1.  **Project Setup & Infrastructure:** 
+    - Small folder structure setup 
+    - Dockerizing the environment to ensure "it works on every machine."
 
-> Each question has 4 options scored 0–3.
-> Sum all selected option scores.
-> Match total score with result range.
+2.  **Backend Integration:** Establishing a solid relationship between Payload CMS and the frontend via GraphQL.
 
+3.  **Responsive UI:** Ensuring a "Mobile First" experience with cosmic-themed glassmorphism.
 
-## Payload Encryption (Notes Field)
+### ⚠️ Simplified/Skipped:
 
-Use Payload Hooks to:
-- **Before save:** Encrypt the `notes` field
-- **After read:** Decrypt it for admin and API use
-- Just don’t store notes in plain text
+1.  **Dynamic Score Sync:** Currently, scores are "snapshotted" at the time of the quiz. If an admin changes a score later, the past results don't auto-update.
 
-Use the following code snippet to save time.
-```ts
-export function encrypt(str, shift = 3) {
-  return str
-    .split('')
-    .map(char => String.fromCharCode(char.charCodeAt(0) + shift))
-    .join('');
-}
+2.  **Full User CRUD:** Focused on the core "Take Quiz" and "View History" flow; full profile management was simplified.
 
-export function decrypt(str, shift = 3) {
-  return str
-    .split('')
-    .map(char => String.fromCharCode(char.charCodeAt(0) - shift))
-    .join('');
-}
-```
+3.  **Better Tailwind CSS Mantainace** Global files or themes can be added for better UI/tailwind management.
 
+### 🚀 Future Improvements:
 
-## Submission
-- Upload to GitHub and share a **public repo**
-- Include instructions to run CMS (`yarn`, `.env`, Docker if needed)
-- Link to deployed app (if hosted)
-- Be prepared to walk through the structure
-
-## Notes
-What to do if test takes longer than 2 hours?
-**Before exceeding 2 hours**, Write a brief note in your README explaining:
-- Which parts you prioritized and why  
-- Which parts you skipped or simplified and why  
-- What you would do to complete or improve the test if given more time  
-- Any assumptions or architectural choices you made  
+1.  **Real-Time Score Sync:** Implement a "Reference" system where user answers are stored by ID, so scores update dynamically if the Admin changes question values.
+2.  **Private Results:** Implement Auth so users can only see their own history, preventing unauthorized email lookups.
+3.  **Upload Questions:** Can add feature for uploading files with a proper format to save all questions in db at once by admin
+4.  **Frontend Optimizations** Can make the frontend more better, more better way of organizing css classes
+can make the classes dynamic, use variables or direct define the css classes if needed for tailwind4
