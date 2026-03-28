@@ -33,7 +33,7 @@ export const RecordCards = ({ history, hasSearched, loading }: RecordCardsProps)
             <div className="space-y-4">
               <div className="flex justify-between items-start gap-4">
                 <p className="text-lg font-bold text-white leading-tight">
-                  {res.label.split('—')[0]} {/* Cleans up long labels */}
+                  {res.label.split('—')[0]}
                 </p>
                 <span className="text-2xl font-black text-blue-400 drop-shadow-sm">
                   {res.score}
