@@ -1,22 +1,22 @@
 import type { CollectionConfig } from 'payload'
 
 export const Quiz: CollectionConfig = {
-    slug: "quiz",
-    admin: {
+  slug: 'quiz',
+  admin: {
     useAsTitle: 'quizTitle',
     defaultColumns: ['quizTitle', 'createdAt', 'updatedAt'],
   },
-    access: {
+  access: {
     create: async ({ req }) => {
       const existingQuizzes = await req.payload.find({
-      collection: 'quiz',
-      limit: 1,
-      });
-    return existingQuizzes.totalDocs === 0; 
-  },
-    read: () => true,
+        collection: 'quiz',
+        limit: 1,
+      })
+      return existingQuizzes.totalDocs === 0
     },
-    fields: [
+    read: () => true,
+  },
+  fields: [
     {
       name: 'quizTitle',
       type: 'text',
@@ -29,36 +29,36 @@ export const Quiz: CollectionConfig = {
       defaultValue: 'Answer these questions.',
     },
     {
-    name: "questions",
-    type: "array",
-    minRows:1,
-    required:true,
-    fields: [
-    {
-      name: 'question',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'options',
+      name: 'questions',
       type: 'array',
+      minRows: 1,
       required: true,
-      minRows: 2,
-      maxRows: 4,
       fields: [
         {
-          name: 'label',
+          name: 'question',
           type: 'text',
           required: true,
         },
         {
-          name: 'score',
-          type: 'number',
+          name: 'options',
+          type: 'array',
           required: true,
+          minRows: 2,
+          maxRows: 4,
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'score',
+              type: 'number',
+              required: true,
+            },
+          ],
         },
       ],
     },
-    ]
-    }
-  ]
+  ],
 }
